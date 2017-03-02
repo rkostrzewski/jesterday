@@ -1,6 +1,6 @@
 {
   "name": "jesterday",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Small library for keeping sanity when dealing with JavaScript Date",
   "author": "rkostrzewski <poczta.raf.kos@gmail.com>",
   "jsnext:main": "dist/es/index.js",
