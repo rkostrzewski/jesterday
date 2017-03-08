@@ -1,7 +1,12 @@
 # jesterday
 [![Build Status](	https://img.shields.io/travis/rkostrzewski/jesterday.svg)](https://travis-ci.org/rkostrzewski/jesterday)[![codecov](		https://img.shields.io/codecov/c/github/rkostrzewski/jesterday.svg)](https://codecov.io/gh/rkostrzewski/jesterday)[![dependencies](https://img.shields.io/david/rkostrzewski/jesterday.svg)](https://david-dm.org/rkostrzewski/jesterday)[![npm](https://img.shields.io/npm/v/jesterday.svg)](https://www.npmjs.com/package/jesterday)
 
+## Contents
+Utility functions for managing dates, e.g. adding, subtracting dates, accessing start/end of week, month, etc.
+
 ## [Documentation](https://rkostrzewski.github.io/jesterday/)
+Full documentation hosted on github pages.
+
 ## Highlights
 - API focused on Functional Programming and immutability
 - Small size
