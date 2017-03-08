@@ -15,6 +15,8 @@ export const DATE_PARTS = {
   /** @member {string} */
   day: 'day',
   /** @member {string} */
+  week: 'week',
+  /** @member {string} */
   month: 'month',
   /** @member {string} */
   year: 'year',
@@ -36,6 +38,8 @@ export const DATE_PARTS_PLURALIZED = {
   hours: 'hours',
   /** @member {string} */
   days: 'days',
+  /** @member {string} */
+  weeks: 'weeks',
   /** @member {string} */
   months: 'months',
   /** @member {string} */

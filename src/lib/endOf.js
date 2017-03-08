@@ -15,32 +15,31 @@ import { DATE_PARTS } from './enums'
   * @return {jesterday.Date}         Ending point of given time interval.
   */
 export default function endOf (part, date) {
-  let jsDate
+  let jsDate = toJS(date)
   switch (part) {
     case DATE_PARTS.second:
-      jsDate = toJS(date)
       jsDate.setUTCMilliseconds(999)
       break
     case DATE_PARTS.minute:
-      jsDate = toJS(date)
       jsDate.setUTCSeconds(59, 999)
       break
     case DATE_PARTS.hour:
-      jsDate = toJS(date)
       jsDate.setUTCMinutes(59, 59, 999)
       break
     case DATE_PARTS.day:
-      jsDate = toJS(date)
       jsDate.setUTCHours(23, 59, 59, 999)
       break
+    case DATE_PARTS.week:
+      const daysUntilEndOfWeek = 6 - jsDate.getUTCDay()
+      jsDate.setUTCHours(23, 59, 59, 999)
+      jsDate.setUTCDate(jsDate.getUTCDate() + daysUntilEndOfWeek)
+      break
     case DATE_PARTS.month:
-      jsDate = toJS(date)
       jsDate.setUTCMonth(jsDate.getUTCMonth() + 1)
       jsDate.setUTCDate(0)
       jsDate.setUTCHours(23, 59, 59, 999)
       break
     case DATE_PARTS.year:
-      jsDate = toJS(date)
       jsDate.setUTCFullYear(jsDate.getUTCFullYear() + 1)
       jsDate.setUTCMonth(0)
       jsDate.setUTCDate(0)

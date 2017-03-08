@@ -1,5 +1,6 @@
 import fromJS from './fromJS'
 import toJS from './toJS'
+import { DATE_PARTS } from './enums'
 
 /**
  * Returns starting point of given time interval based on passed date.
@@ -14,32 +15,30 @@ import toJS from './toJS'
  * @return {jesterday.Date}       Starting point of given time interval.
  */
 export default function startOf (part, date) {
-  let jsDate
+  const jsDate = toJS(date)
   switch (part) {
-    case 'second':
-      jsDate = toJS(date)
+    case DATE_PARTS.second:
       jsDate.setUTCMilliseconds(0)
       break
-    case 'minute':
-      jsDate = toJS(date)
+    case DATE_PARTS.minute:
       jsDate.setUTCSeconds(0, 0)
       break
-    case 'hour':
-      jsDate = toJS(date)
+    case DATE_PARTS.hour:
       jsDate.setUTCMinutes(0, 0, 0)
       break
-    case 'day':
-      jsDate = toJS(date)
+    case DATE_PARTS.day:
       jsDate.setUTCHours(0, 0, 0, 0)
       break
-    case 'month':
-      jsDate = toJS(date)
+    case DATE_PARTS.week:
+      jsDate.setUTCHours(0, 0, 0, 0)
+      jsDate.setUTCDate(jsDate.getUTCDate() - jsDate.getUTCDay())
+      break
+    case DATE_PARTS.month:
       jsDate.setUTCMonth(jsDate.getUTCMonth())
       jsDate.setUTCDate(1)
       jsDate.setUTCHours(0, 0, 0, 0)
       break
-    case 'year':
-      jsDate = toJS(date)
+    case DATE_PARTS.year:
       jsDate.setUTCFullYear(jsDate.getUTCFullYear())
       jsDate.setUTCMonth(0)
       jsDate.setUTCDate(1)

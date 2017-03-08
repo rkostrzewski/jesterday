@@ -10,6 +10,7 @@ import { DATE_PARTS, DATE_PARTS_PLURALIZED } from './enums'
  * @return {jesterday.Date}                          Base date increased by given unit of time interval.
  */
 export default function add (number, part, date) {
+  let increase = number
   let op
   switch (part) {
     case DATE_PARTS.millisecond:
@@ -32,6 +33,11 @@ export default function add (number, part, date) {
     case DATE_PARTS_PLURALIZED.days:
       op = { set: 'setUTCDate', get: 'getUTCDate' }
       break
+    case DATE_PARTS.week:
+    case DATE_PARTS_PLURALIZED.weeks:
+      op = { set: 'setUTCDate', get: 'getUTCDate' }
+      increase *= 7
+      break
     case DATE_PARTS.month:
     case DATE_PARTS_PLURALIZED.months:
       op = { set: 'setUTCMonth', get: 'getUTCMonth' }
@@ -45,6 +51,6 @@ export default function add (number, part, date) {
   }
 
   const jsDate = toJS(date)
-  jsDate[op.set](jsDate[op.get]() + number)
+  jsDate[op.set](jsDate[op.get]() + increase)
   return fromJS(jsDate, date.timezoneOffset)
 }
