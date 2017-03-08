@@ -27,7 +27,8 @@
     "test": "cross-env NODE_ENV=test jest --coverage",
     "test:watch": "cross-env NODE_ENV=test jest --watchAll",
     "codecov": "codecov",
-    "prepublish": "npm run build && npm run test"
+    "prepublish": "npm run build && npm run test",
+    "postpublish": "npm run docs && npm run deploy:docs"
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
